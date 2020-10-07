@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cretae Event</title>
+</head>
+<body>
+
+    <fieldset style="width: 30%; display: block; margin: auto;">
+        <legend>Create </legend>
+        <form action="/events/add" method="post">
+            <table>
+                <tr>
+                    <td style="width: 100px;"> Title : </td>
+                    <td> 
+                        <input type="text" placeholder="Name" required name="title" >
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100px;"> Date : </td>
+                    <td> 
+                        <input type="date" placeholder="Date" required name="date" >
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> <input type="submit" value="Create"> </td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    
+</body>
+</html>

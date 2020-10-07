@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List</title>
+</head>
+
+<body>
+    <h2 style="text-align: center; margin-top: 40px; margin-bottom : 40px"> Events List </h2>
+    <a href="/events/add"> Create New Event </a>
+    <table style="width:20%; display: block; margin: auto;" border="1">
+        <thead>
+            <th> Id </th>
+            <th> Title </th>
+            <th> Date </th>
+            <th> Delete </th>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td> {{event.id}} </td>
+                <td> {{event.title}} </td>
+                <td> {{event.date}} </td>
+                <td>
+                    <button onclick="remove('{{ event.id }}')"> Delete </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        function remove(id) {
+        
+            $.ajax({
+                method : "DELETE",
+                contentType : "application/json",
+                url : '/events/delete/'+id,
+            }).then((data)=>{
+                console.log(data)
+                window.location.href = "/events"
+            })
+        }
+    </script>
+</body>
+
+</html>
