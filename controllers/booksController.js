@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const {Book} = require('../models/book.model');
+const { Book } = require('../models/book.model');
 // function(params) {} == (params) => {}
 
 const getAll = function(req,res,next){
@@ -8,18 +8,19 @@ const getAll = function(req,res,next){
         if(!err){
             //console.log("data", data.toString());
             const books = JSON.parse(data).books;
-            
+
             let livres = [];
-
             books.forEach((el)=>{
-                livres.push(Book.fromJson(el));
+                var book = Book.fromJson(el);
+                livres.push(book);
+            });
+
+
+            const list = books.map((el)=>{
+                return Book.fromJson(el);
             })
 
-            const list = books.map((element)=>{
-                return Book.fromJson(element);
-            })
-
-            res.json(list)
+            res.json(list);
             //res.render('book_list', { books })
         }
     })
