@@ -6,8 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const mongoose = require('mongoose');
 
 var app = express();
+
+mongoose.connect('mongodb://localhost:27017/esp' , { useNewUrlParser : true, useUnifiedTopology : true }).then((data)=>{
+  console.log("mongodb connected")
+}).catch((err)=>{
+  console.log("error ", err)
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
