@@ -23,5 +23,9 @@ router.get('/find/',userController.findWithQueryParams)
 // /find/?id=2&email ...
 
 router.post('/create', userMongoController.saveUser);
+router.delete('/delete/:id', userMongoController.deleteUser);
+router.put('/update/:id', userMongoController.updateUser);
+router.get('/find/:id', userMongoController.getUser);
+router.get('/list', userMongoController.getUsers);
 
 module.exports = router;

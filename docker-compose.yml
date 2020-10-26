@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    server-app:
+        image: tryvl/projet:1.0.0
+        ports:
+            - "3002:3000"
+        depends_on: 
+            - mongo
+        restart: always
+    mongo:
+        image: mongo
+        restart: always
+        ports:
+            - "27017:27017"
