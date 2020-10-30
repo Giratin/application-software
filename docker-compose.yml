@@ -1,15 +1,22 @@
 version: '3'
 
 services:
-    server-app:
-        image: tryvl/projet:1.0.0
+    serveur:
+        image: 
+            context: .
+            dockerfile: Dockerfile
+        restart: always
         ports:
             - "3002:3000"
         depends_on: 
-            - mongo
-        restart: always
-    mongo:
+            - mongo-db
+    mongo-db:
         image: mongo
         restart: always
-        ports:
+        ports: 
             - "27017:27017"
+        volumes: 
+            - mongo-db-volume:/data/db
+
+volumes: 
+    mongo-db-volume:

@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://mongo:27017/esp' , { useNewUrlParser : true, useUnifiedTopology : true }).then((data)=>{
+mongoose.connect('mongodb://mongo-db:27017/esp' , { useNewUrlParser : true, useUnifiedTopology : true }).then((data)=>{
   console.log("mongodb connected")
 }).catch((err)=>{
   console.log("error ", err)
